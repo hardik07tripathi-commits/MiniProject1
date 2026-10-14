@@ -1,0 +1,20 @@
+users = ["Alice", "Bob", "Charlie"]
+
+matrix = [
+    [0, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0]
+]
+
+matrix[0][1] = 1
+matrix[1][0] = 1
+
+matrix[1][2] = 1
+matrix[2][1] = 1
+
+print("Social Network Adjacency Matrix:\n")
+
+print("      ", users)
+
+for i in range(len(users)):
+    print(users[i], " ", matrix[i])
