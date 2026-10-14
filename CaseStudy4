@@ -1,0 +1,42 @@
+size = 10
+table = [[] for i in range(size)]
+
+
+def add_word(word, meaning):
+    index = len(word) % size
+    table[index].append([word, meaning])
+    print("Word added successfully!")
+
+def search_word(word):
+    index = len(word) % size
+
+    for item in table[index]:
+        if item[0] == word:
+            print("Meaning:", item[1])
+            return
+
+    print("Word not found!")
+
+
+while True:
+    print("\n1. Add Word")
+    print("2. Search Word")
+    print("3. Exit")
+
+    choice = input("Enter choice: ")
+
+    if choice == "1":
+        word = input("Enter word: ").lower()
+        meaning = input("Enter meaning: ")
+        add_word(word, meaning)
+
+    elif choice == "2":
+        word = input("Enter word: ").lower()
+        search_word(word)
+
+    elif choice == "3":
+        print("Program ended")
+        break
+
+    else:
+        print("Invalid choice")
