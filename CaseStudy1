@@ -1,0 +1,29 @@
+products = [50000, 2000, 1500, 20000, 500]
+
+def merge_sort(products):
+    if len(products) <= 1:
+        return products
+
+    mid = len(products) // 2
+
+    left = merge_sort(products[:mid])
+    right = merge_sort(products[mid:])
+
+    result = []
+
+    while len(left) > 0 and len(right) > 0:
+        if left[0] < right[0]:
+            result.append(left.pop(0))
+        else:
+            result.append(right.pop(0))
+
+    result.extend(left)
+    result.extend(right)
+
+    return result
+
+
+sorted_products = merge_sort(products)
+
+print("Products sorted by price:")
+print(sorted_products)
