@@ -1,0 +1,37 @@
+city = {
+    'A': {'B': 4, 'C': 2},
+    'B': {'A': 4, 'D': 5},
+    'C': {'A': 2, 'D': 3},
+    'D': {'B': 5, 'C': 3}
+}
+
+start = input("Enter starting place (A/B/C/D): ").upper()
+end = input("Enter destination (A/B/C/D): ").upper()
+
+distance = {place: 9999 for place in city}
+distance[start] = 0
+visited = []
+
+while len(visited) < len(city):
+    current = None
+
+    for place in city:
+        if place not in visited:
+            if current is None or distance[place] < distance[current]:
+                current = place
+
+    if current is None or distance[current] == 9999:
+        break
+
+    visited.append(current)
+
+    for neighbor, cost in city[current].items():
+        new_distance = distance[current] + cost
+
+        if new_distance < distance[neighbor]:
+            distance[neighbor] = new_distance
+
+if end in city:
+    print("Shortest distance:", distance[end])
+else:
+    print("Invalid destination!")
